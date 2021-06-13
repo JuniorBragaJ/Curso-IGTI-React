@@ -2,7 +2,7 @@
 function App() {
   return (
     <div>
-      Olá, Mundo!
+      Olá, Mundo
     </div>
   );
 }
