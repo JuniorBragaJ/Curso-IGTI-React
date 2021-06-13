@@ -7,6 +7,7 @@ import { getAgeFrom } from "./helpers/dateHelpers";
 import { getNewId } from "./services/idService";
 import Timer from "./components/Timer";
 import CheckboxInput from "./components/CheckboxInput";
+import OnlineOffline from "./components/OnlineOffline";
 // import Test from './components/Test'
 
 
@@ -16,11 +17,32 @@ export default function App() {
   const [name, setName] = useState('');   //setName vem junto com o useState como se fosse a função
   const [birthDate, setBirthDate] = useState('2020-01-01');   // que seta o valor digitado
   const [showTimer, setShowTimer] = useState(false);
+  const [isOnline, setIsOnline] = useState(true);
   
 
   useEffect(() => {
     document.title = name
   }, [name])
+  
+  useEffect(() => {
+    function toggleOnline() {
+      setIsOnline(true);
+    }
+    function toggleOffline() {
+      setIsOnline(false)
+    }
+
+    window.addEventListener('online', toggleOnline());
+    window.addEventListener('offline', toggleOffline());
+
+    return () => {
+      window.removeEventListener('online', toggleOnline());
+      window.removeEventListener('offline', toggleOffline());
+    };
+}, [])
+
+
+
 
   function handleNameChange (newName) {
     setName(newName)
@@ -39,14 +61,14 @@ export default function App() {
       <Header>React hello world! </Header>
       
       <Main>
-        {
-          showTimer  &&(
+        <OnlineOffline isOnline = {isOnline}/>
+
+        { showTimer  &&(
           <div className="text-right">
           <Timer/>
           </div>
           )}
         
-
         <CheckboxInput 
         labelDescription="Mostrar Timer"
         onCheckboxChange={toggleShowTimer}/>

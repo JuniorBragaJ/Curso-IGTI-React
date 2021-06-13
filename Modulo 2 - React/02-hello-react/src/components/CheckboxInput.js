@@ -4,7 +4,7 @@ export default function CheckboxInput({
     onCheckboxChange = null,
     id = "id_do_input_checkbox"
 }) {
-    function handleInputChange ({currentTarget}) {
+    function handleInputChange () {
         if (onCheckboxChange){
             onCheckboxChange();
         }
