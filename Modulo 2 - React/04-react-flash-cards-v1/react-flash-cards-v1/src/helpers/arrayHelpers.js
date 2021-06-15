@@ -1,0 +1,10 @@
+// Adaptado de: https://stackoverflow.com/a/12646864
+
+export function helperShuffleArray(array) {
+    const shuffledArray = [...array];
+
+    for(let i = shuffledArray.length - 1; 1 > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]] 
+    }
+}

@@ -10,10 +10,10 @@ export default function FlashCard({
             setShowTitle(currentShowTitle => !currentShowTitle)
         }
 
-        const fontSizeClassName = showTitle ? 'text-xl' : 'text-md';
+        const fontSizeClassName = showTitle ? 'text-xl' : 'text-sm';
 
         return (
-            <div className={`border-2 p-2 w-64 h-32 
+            <div className={`border-2 m-2 p-2 w-64 h-40 
                         flex flex-row justify-center items-center 
                         font-bold ${fontSizeClassName} text-center`} 
                  onClick={handleCardClick}>
