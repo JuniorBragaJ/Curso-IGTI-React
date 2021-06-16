@@ -1,10 +1,16 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export default function FlashCard({
     title = "Titulo do card", 
-    description = "Descrição do FlashCard, que por ventura possui mais caracteres"}) {
+    description = "Descrição do FlashCard, que por ventura possui mais caracteres",
+    showFlashCardTitle = true,
+}) {
         
-        const [showTitle, setShowTitle] = useState(true);
+        const [showTitle, setShowTitle] = useState(showFlashCardTitle);
+
+        useEffect(() => {
+            setShowTitle(showFlashCardTitle)
+        }, [showFlashCardTitle])
         
         function handleCardClick(){
             setShowTitle(currentShowTitle => !currentShowTitle)
