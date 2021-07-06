@@ -1,15 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
+import InputSearch from '../atoms/InputSearch.component';
 
 
 const Container = styled.div`
-    height: 50rem;
-    width: 50rem;
-    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-basis: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    padding-top: 5rem;
+
 `;
 
 const CitySearch = () => {
-    return <Container/>
+    return <Container>
+                <InputSearch found/>
+        </Container>
 }
 
 export default CitySearch;
