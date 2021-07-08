@@ -19,7 +19,7 @@ interface SearchInputProps {
 const SearchInput= styled.input<SearchInputProps>`
     width: 80%;
     border-radius: 100px;
-    heigth: 1rem;
+    height: 1rem;
     margin-right: -3.0rem;
     background-color: ${({error}) => `${ error ? `var(--primary)` : `var(--grey-dark-3)`}`};
     padding: .75rem 2rem; 
