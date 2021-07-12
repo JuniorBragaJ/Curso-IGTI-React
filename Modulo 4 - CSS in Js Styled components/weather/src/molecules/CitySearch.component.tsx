@@ -1,7 +1,10 @@
 import React from 'react';
+import { useEffect } from 'react';
 import styled from 'styled-components';
 import InputSearch from '../atoms/InputSearch.component';
-
+import { useAtom } from 'jotai';
+import { citiesAtom } from '../global'
+import CityTag from '../atoms/CityTag.component';
 
 const Container = styled.div`
     display: flex;
@@ -16,8 +19,12 @@ const Container = styled.div`
 `;
 
 const CitySearch = () => {
+    const [cities] = useAtom(citiesAtom)
     return <Container>
-                <InputSearch found/>
+                <InputSearch found={false}/>
+                <div>
+                    {cities.map(city => (<CityTag name={city.name}/>))}
+                </div>
         </Container>
 }
 
