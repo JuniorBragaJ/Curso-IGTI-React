@@ -58,7 +58,7 @@ const Loading = styled.div`
 const WeatherDisplay = () => {
     const {isFetching, data} = useWeatherDisplay();
     if(isFetching || !data) return <Loading>Carregando</Loading>;
-    if(!data.weather || !data.main) return <Loading>Sem dados</Loading>
+    if(!data.weather || !data.main) return <Loading>Sem dados</Loading>;
 
     return(
         <Container>

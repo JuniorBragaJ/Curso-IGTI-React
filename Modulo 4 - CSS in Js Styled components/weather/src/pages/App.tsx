@@ -2,11 +2,11 @@ import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { CityEntity } from '../api/Entities/EntityesDefinition';
 import WeatherDisplay from '../atoms/weatherDisplay.component';
 import CitySearch from '../molecules/CitySearch.component';
 import '../styles/colors.styles.css'
 import styled from 'styled-components';
+import ThemeSwitch from '../atoms/ThemeSwitch.component';
 
 const Container = styled.div`
   overflow: hidden;
@@ -14,7 +14,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: space-around;
   margin: auto;
-  padding-top: 1rem;
+  padding: 1rem; 
 `
 
 const AppContainer =styled.div`
@@ -35,6 +35,7 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <AppContainer>
           <Container>
+            <ThemeSwitch/>
             <div><CitySearch/></div>
             <ContainerWeatherDisplay>
               <WeatherDisplay/>
