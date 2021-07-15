@@ -22,7 +22,8 @@ const SearchInput= styled.input<SearchInputProps>`
     border-radius: 100px;
     height: 1rem;
     margin-right: -3.0rem;
-    background-color: ${({error}) => `${ error ? `var(--primary)` : `var(--grey-dark-3)`}`};
+    background-color: ${({error, theme}) => `${ error ? theme.error : theme.secondary}`};
+    border: ${({theme}) => theme.secondary} solid 2px;
     padding: .75rem 2rem; 
     outline: none;
     transition: 1s;

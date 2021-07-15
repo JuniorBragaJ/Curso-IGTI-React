@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import styled from 'styled-components';
 import InputSearch from '../atoms/InputSearch.component';
 import CityList from './CityList.component';
+import {citiesAtom} from '../global';
+import { useAtom } from 'jotai';
 
 const Container = styled.div`
     display: flex;
@@ -17,8 +19,9 @@ const Container = styled.div`
 `;
 
 const CitySearch = () => {
+    const [cities] = useAtom(citiesAtom);
     return <Container>
-                <InputSearch found/>
+                <InputSearch found={cities.length > 0}/>
                 <CityList />
         </Container>
 }

@@ -5,8 +5,14 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import WeatherDisplay from '../atoms/weatherDisplay.component';
 import CitySearch from '../molecules/CitySearch.component';
 import '../styles/colors.styles.css'
-import styled from 'styled-components';
+import styled, {ThemeProvider} from 'styled-components';
 import ThemeSwitch from '../atoms/ThemeSwitch.component';
+import { useAtom } from 'jotai';
+import {themeAtom} from '../global';
+import { LightTheme, DarkTheme } from '../themes';
+
+
+
 
 const Container = styled.div`
   overflow: hidden;
@@ -14,13 +20,15 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: space-around;
   margin: auto;
-  padding: 1rem; 
+  padding: 1rem;
+  background-color : ${({theme}) => theme.background};
 `
 
 const AppContainer =styled.div`
   overflow: hidden;
   height: 100vh;
   width: 100vw;
+  background-color: ${({theme}) => theme.background};
 `
 
 const ContainerWeatherDisplay = styled.div`
@@ -31,17 +39,20 @@ const ContainerWeatherDisplay = styled.div`
 
 function App() {
   const queryClient = new QueryClient()
+  const [theme] = useAtom(themeAtom);
   return (
       <QueryClientProvider client={queryClient}>
-        <AppContainer>
-          <Container>
-            <ThemeSwitch/>
-            <div><CitySearch/></div>
-            <ContainerWeatherDisplay>
-              <WeatherDisplay/>
-            </ContainerWeatherDisplay>
-          </Container>
-        </AppContainer>
+        <ThemeProvider theme={theme === 'dark'? DarkTheme : LightTheme}>
+          <AppContainer>
+            <Container>
+              <ThemeSwitch/>
+              <div><CitySearch/></div>
+              <ContainerWeatherDisplay>
+                <WeatherDisplay/>
+              </ContainerWeatherDisplay>
+            </Container>
+          </AppContainer>
+        </ThemeProvider>
       </QueryClientProvider>
   );
 }
