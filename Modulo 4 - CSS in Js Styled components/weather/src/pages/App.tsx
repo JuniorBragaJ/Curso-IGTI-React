@@ -33,7 +33,8 @@ const AppContainer =styled.div`
 
 const ContainerWeatherDisplay = styled.div`
   width: 30%;
-  margin: auto;
+  margin-right: auto;
+  margin-left: auto;
 `
 
 

@@ -6,7 +6,7 @@ import { checkedCityAtom } from "../global"
 
 const useWeatherDisplay = () => {
     const [cityChecked] = useAtom(checkedCityAtom)
-    const url = `http://api.openweathermap.org/2.5/weather?id=${cityChecked}&units=metric&lang=pt_br&appid=d363a18c24dddb7f93f48ef46ef4324c`
+    const url = `http://api.openweathermap.org/data/2.5/weather?id=${cityChecked}&units=metric&lang=pt_br&appid=d363a18c24dddb7f93f48ef46ef4324c`
     const {isFetching, data} = useQuery<WeatherData>(weatherQuery(cityChecked as number), () => 
         fetch(url)
         .then(response => response.json())
